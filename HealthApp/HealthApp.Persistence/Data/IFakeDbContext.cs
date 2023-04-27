@@ -1,6 +1,10 @@
-﻿namespace HealthApp.Persistence.Data;
+﻿using HealthApp.Domain.Entities;
+
+namespace HealthApp.Persistence.Data;
 
 public interface IFakeDbContext
 {
-    IEnumerable<T> GetList<T>();
+    public List<Patient> _patients { get; set; }
+    public List<Doctor> _doctors { get; set; }
+    public List<Card> _cards { get; set; }
 }
