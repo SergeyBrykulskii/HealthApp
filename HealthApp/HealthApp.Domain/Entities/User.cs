@@ -1,22 +1,21 @@
-﻿namespace HealthApp.Domain.Entities;
+﻿using HealthApp.Domain.EntityInterfaces;
 
-public class User
+namespace HealthApp.Domain.Entities;
+
+public abstract class User : IUser
 {
-    public User()
+    private static int GlobalId = 0;
+    public User(string name, string password, string email)
     {
-        Name = string.Empty;
-        Login = string.Empty;
-        Password = string.Empty;
-    }
-    public User(int id, string name, string login, string password)
-    {
-        Id = id;
+        Id = GlobalId;
+        ++GlobalId;
+
         Name = name;
-        Login = login;
         Password = password;
+        Email = email;
     }
     public string Name { get; set; }
-    public string Login { get; set; }
     public string Password { get; set; }
     public int Id { get; set; }
+    public string Email { get; set; }
 }
