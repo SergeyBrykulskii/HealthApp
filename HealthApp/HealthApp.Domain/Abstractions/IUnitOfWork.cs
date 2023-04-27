@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HealthApp.Domain.Entities;
 
-namespace HealthApp.Domain.Abstractions
+namespace HealthApp.Domain.Abstractions;
+
+public interface IUnitOfWork
 {
-    internal interface IUnitOfWork
-    {
-    }
+    IEntityRepository<Doctor> DoctorRepository { get; }
+    IEntityRepository<Patient> PatientRepository { get; }
+    IEntityRepository<Card> CardRepository { get; }
 }
