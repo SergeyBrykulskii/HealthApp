@@ -4,7 +4,7 @@ namespace HealthApp.Persistence.Data;
 
 public class FakeDbContext : IFakeDbContext
 {
-    public List<Patient> _patients { get; set; }
-    public List<Doctor> _doctors { get; set; }
-    public List<Card> _cards { get; set; }
+    public List<Patient> _patients { get; set; } = new();
+    public List<Doctor> _doctors { get; set; } = new();
+    public List<Card> _cards { get; set; } = new();
 }

@@ -8,6 +8,11 @@ public class Doctor : User
         Speciality = speciality;
         WorkingHours = (start, end);
     }
+    public Doctor(string password, string email) : base(password, email)
+    {
+        Speciality = string.Empty;
+        WorkingHours = (new TimeOnly(8, 0), new TimeOnly(18, 0));
+    }
 
     public string Speciality { get; set; }
     public (TimeOnly, TimeOnly) WorkingHours { get; set; }

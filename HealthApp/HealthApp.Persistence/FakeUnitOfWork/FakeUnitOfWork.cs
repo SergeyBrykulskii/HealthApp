@@ -11,6 +11,11 @@ public class FakeUnitOfWork : IUnitOfWork
     private readonly Lazy<IEntityRepository<Patient>> _patientsRepository;
     private readonly Lazy<IEntityRepository<Doctor>> _doctorsRepository;
     private readonly Lazy<IEntityRepository<Card>> _cardsRepository;
+    public IEntityRepository<Doctor> DoctorRepository => _doctorsRepository.Value;
+
+    public IEntityRepository<Patient> PatientRepository => _patientsRepository.Value;
+
+    public IEntityRepository<Card> CardRepository => _cardsRepository.Value;
 
     public FakeUnitOfWork(IFakeDbContext fakeDbContext)
     {
@@ -19,9 +24,4 @@ public class FakeUnitOfWork : IUnitOfWork
         _doctorsRepository = new Lazy<IEntityRepository<Doctor>>(() => new FakeEntityRepository<Doctor>(_fakeDbContext));
         _cardsRepository = new Lazy<IEntityRepository<Card>>(() => new FakeEntityRepository<Card>(_fakeDbContext));
     }
-    public IEntityRepository<Doctor> DoctorRepository => _doctorsRepository.Value;
-
-    public IEntityRepository<Patient> PatientRepository => _patientsRepository.Value;
-
-    public IEntityRepository<Card> CardRepository => _cardsRepository.Value;
 }

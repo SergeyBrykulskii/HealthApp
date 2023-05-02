@@ -9,7 +9,7 @@ public class Menu
     private readonly IDoctorService _doctorService;
     private readonly IPatientService _patientService;
 
-    Menu(ICardService cardService,
+    public Menu(ICardService cardService,
          IDoctorService doctorService,
          IPatientService patientService)
     {
