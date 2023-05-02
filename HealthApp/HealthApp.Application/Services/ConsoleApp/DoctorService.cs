@@ -6,7 +6,7 @@ namespace HealthApp.Application.Services.ConsoleApp;
 
 public class DoctorService : IDoctorService
 {
-    private IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
 
     public DoctorService(IUnitOfWork unitOfWork)
     {
@@ -35,6 +35,11 @@ public class DoctorService : IDoctorService
     public IReadOnlyList<Doctor> ListAll()
     {
         return _unitOfWork.DoctorRepository.ListAll();
+    }
+
+    public Doctor FirstOrDefault(Func<Doctor, bool> filter)
+    {
+        return _unitOfWork.DoctorRepository.FirstOrDefault(filter);
     }
 
     public void Update(Doctor entity)

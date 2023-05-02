@@ -1,4 +1,5 @@
-﻿using HealthApp.Application.Abstractions.ConsoleApp;
+﻿using ConsoleApp.ConsoleMenu;
+using HealthApp.Application.Abstractions.ConsoleApp;
 using HealthApp.Application.Services.ConsoleApp;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,7 +11,7 @@ var services = scope.ServiceProvider;
 
 try
 {
-    services.GetRequiredService<App>.Run(args);
+    services.GetRequiredService<Menu>();
 }
 catch (Exception ex)
 {

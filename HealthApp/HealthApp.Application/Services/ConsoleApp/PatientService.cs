@@ -6,7 +6,7 @@ namespace HealthApp.Application.Services.ConsoleApp;
 
 public class PatientService : IPatientService
 {
-    private IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
 
     public PatientService(IUnitOfWork unitOfWork)
     {
@@ -35,6 +35,11 @@ public class PatientService : IPatientService
     public IReadOnlyList<Patient> ListAll()
     {
         return _unitOfWork.PatientRepository.ListAll();
+    }
+
+    public Patient FirstOrDefault(Func<Patient, bool> filter)
+    {
+        return _unitOfWork.PatientRepository.FirstOrDefault(filter);
     }
 
     public void Update(Patient entity)

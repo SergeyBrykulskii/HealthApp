@@ -64,4 +64,9 @@ public class FakeEntityRepository<T> : IEntityRepository<T> where T : IEntity
             _entities[index] = entity;
         }
     }
+
+    public T FirstOrDefault(Func<T, bool> filter)
+    {
+        return _entities.FirstOrDefault(filter)!;
+    }
 }

@@ -13,5 +13,8 @@ public interface IEntityRepository<T> where T : IEntity
     void Update(T entity);
 
     void Delete(T entity);
+
     bool IsExists(Func<T, bool> filter);
+
+    T FirstOrDefault(Func<T, bool> filter);
 }

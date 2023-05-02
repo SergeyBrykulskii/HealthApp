@@ -6,7 +6,7 @@ namespace HealthApp.Application.Services.ConsoleApp;
 
 public class CardService : ICardService
 {
-    private IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
 
     public CardService(IUnitOfWork unitOfWork)
     {
@@ -37,6 +37,10 @@ public class CardService : ICardService
         return _unitOfWork.CardRepository.ListAll();
     }
 
+    public Card FirstOrDefault(Func<Card, bool> filter)
+    {
+        return _unitOfWork.CardRepository.FirstOrDefault(filter);
+    }
     public void Update(Card entity)
     {
         _unitOfWork.CardRepository.Update(entity);

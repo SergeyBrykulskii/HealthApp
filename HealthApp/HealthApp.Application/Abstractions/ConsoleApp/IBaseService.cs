@@ -8,6 +8,8 @@ public interface IBaseService<T> where T : IEntity
 
     IReadOnlyList<T> ListAll();
 
+    T FirstOrDefault(Func<T, bool> filter);
+
     void Add(T entity);
 
     void Update(T entity);
