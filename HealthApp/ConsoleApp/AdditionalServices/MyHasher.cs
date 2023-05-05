@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ConsoleApp.Helpers;
+namespace ConsoleApp.AdditionalServices;
 
 public static class MyHasher
 {
