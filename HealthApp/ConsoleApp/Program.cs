@@ -39,7 +39,7 @@ static IHostBuilder CreateHostBuilder(string[] args)
         });
 }
 
-(string Status, string Email, int Id) currUser = ("", "Def", -1);
+(string Status, string Email, int Id) currUser = (string.Empty, string.Empty, -1);
 while (true)
 {
     LogIn();
@@ -79,7 +79,7 @@ void LogIn()
             {
                 if (menu.IsDoctorExists(u => u.Email == MyHasher.GetHash(email)))
                 {
-                    Console.WriteLine("User already exists!");
+                    Console.WriteLine("\nUser already exists!");
                     continue;
                 }
 
@@ -93,7 +93,7 @@ void LogIn()
             {
                 if (menu.IsDoctorExists(u => u.Email == MyHasher.GetHash(email)))
                 {
-                    Console.WriteLine("User already exists!");
+                    Console.WriteLine("\nUser already exists!");
                     continue;
                 }
 
@@ -119,7 +119,7 @@ void LogIn()
                 if (!menu.IsDoctorExists(u => u.Email == MyHasher.GetHash(email)
                                       && u.Password == MyHasher.GetHash(password)))
                 {
-                    Console.WriteLine("Invalid email or password");
+                    Console.WriteLine("\nInvalid email or password");
                     continue;
                 }
                 currUser.Status = "d";
@@ -130,7 +130,7 @@ void LogIn()
                 if (!menu.IsPatientExists(u => u.Email == MyHasher.GetHash(email)
                                       && u.Password == MyHasher.GetHash(password)))
                 {
-                    Console.WriteLine("Invalid email or password");
+                    Console.WriteLine("\nInvalid email or password");
                     continue;
                 }
 
@@ -147,7 +147,50 @@ void LogIn()
         }
         else
         {
-            Console.WriteLine("Please enter correct coьmand\nTo sign up press 1\nTo log in press\nTo exit press e\n");
+            Console.WriteLine("Please enter correct command\nTo sign up press 1\nTo log in press\nTo exit press e\n");
         }
     }
+}
+
+void ProcessCommand()
+{
+    while (true)
+    {
+        if (currUser.Id < 0)
+        {
+            LogIn();
+        }
+        Console.WriteLine("\nEnter command code: ");
+
+        if (!int.TryParse(Console.ReadLine(), out int code))
+        {
+            Console.WriteLine("Invalid input!");
+        }
+        else
+        {
+            if (code < 0)
+            {
+                LogOut();
+            }
+            else if (code == 0)
+            {
+                Environment.Exit(0);
+            }
+            else if (!menu.AvailableActions.ContainsKey(code))
+            {
+                Console.WriteLine("No such command!");
+            }
+            else
+            {
+                menu.AvailableActions[code](curUser.Id);
+            }
+        }
+    }
+}
+
+void LogOut()
+{
+    currUser.Status = string.Empty;
+    currUser.Email = string.Empty;
+    currUser.Id = -1;
 }
