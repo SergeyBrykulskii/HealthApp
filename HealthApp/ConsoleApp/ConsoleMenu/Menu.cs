@@ -9,6 +9,7 @@ public class Menu
     private readonly IDoctorService _doctorService;
     private readonly IPatientService _patientService;
 
+    public Dictionary<int, Action<int>> Commands = new Dictionary<int, Action<int>>();
     public Menu(ICardService cardService,
          IDoctorService doctorService,
          IPatientService patientService)

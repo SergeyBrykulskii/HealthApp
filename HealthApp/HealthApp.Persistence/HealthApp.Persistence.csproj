@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HealthApp.Domain\HealthApp.Domain.csproj" />
+    <ProjectReference Include="..\Serialization\Serialization.csproj" />
   </ItemGroup>
 
 </Project>

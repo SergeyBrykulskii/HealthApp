@@ -8,6 +8,7 @@ using HealthApp.Persistence.Data;
 using HealthApp.Persistence.FakeUnitOfWork;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serialization;
 
 using IHost host = CreateHostBuilder(args).Build();
 using var scope = host.Services.CreateScope();
@@ -36,14 +37,14 @@ static IHostBuilder CreateHostBuilder(string[] args)
             services.AddSingleton<ICardService, CardService>();
             services.AddSingleton<IDoctorService, DoctorService>();
             services.AddSingleton<IPatientService, PatientService>();
+            services.AddSingleton<ISerializer, Serializer>();
         });
 }
 
 (string Status, string Email, int Id) currUser = (string.Empty, string.Empty, -1);
-while (true)
-{
-    LogIn();
-}
+
+LogIn();
+ProcessCommand();
 void LogIn()
 {
     while (true)
@@ -160,11 +161,11 @@ void ProcessCommand()
         {
             LogIn();
         }
-        Console.WriteLine("\nEnter command code: ");
+        Console.WriteLine("\nEnter command: ");
 
         if (!int.TryParse(Console.ReadLine(), out int code))
         {
-            Console.WriteLine("Invalid input!");
+            Console.WriteLine("Something wrong, try again");
         }
         else
         {
@@ -176,13 +177,13 @@ void ProcessCommand()
             {
                 Environment.Exit(0);
             }
-            else if (!menu.AvailableActions.ContainsKey(code))
+            else if (!menu.Commands.ContainsKey(code))
             {
-                Console.WriteLine("No such command!");
+                Console.WriteLine("This command is not available");
             }
             else
             {
-                menu.AvailableActions[code](curUser.Id);
+                menu.Commands[code](currUser.Id);
             }
         }
     }
@@ -193,4 +194,11 @@ void LogOut()
     currUser.Status = string.Empty;
     currUser.Email = string.Empty;
     currUser.Id = -1;
+}
+
+Console.CancelKeyPress += СonsoleClosing;
+
+void СonsoleClosing(object? sender, ConsoleCancelEventArgs e)
+{
+    services.GetRequiredService<FakeDbContext>().Serialize();
 }
