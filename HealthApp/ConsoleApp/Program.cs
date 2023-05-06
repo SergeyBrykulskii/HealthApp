@@ -32,16 +32,18 @@ static IHostBuilder CreateHostBuilder(string[] args)
         .ConfigureServices((_, services) =>
         {
             services.AddSingleton<Menu>();
-            services.AddSingleton<IFakeDbContext, FakeDbContext>();
             services.AddSingleton<IUnitOfWork, FakeUnitOfWork>();
             services.AddSingleton<ICardService, CardService>();
             services.AddSingleton<IDoctorService, DoctorService>();
             services.AddSingleton<IPatientService, PatientService>();
             services.AddSingleton<ISerializer, Serializer>();
+            services.AddSingleton<IFakeDbContext, FakeDbContext>();
         });
 }
 
 (string Status, string Email, int Id) currUser = (string.Empty, string.Empty, -1);
+Console.CancelKeyPress += ConsoleClosing;
+AppDomain.CurrentDomain.ProcessExit += AppClosing;
 
 LogIn();
 ProcessCommand();
@@ -196,9 +198,13 @@ void LogOut()
     currUser.Id = -1;
 }
 
-Console.CancelKeyPress += СonsoleClosing;
 
-void СonsoleClosing(object? sender, ConsoleCancelEventArgs e)
+void ConsoleClosing(object? sender, ConsoleCancelEventArgs e)
 {
     services.GetRequiredService<FakeDbContext>().Serialize();
+}
+
+void AppClosing(object? sender, EventArgs e)
+{
+    services.GetRequiredService<IFakeDbContext>().Serialize();
 }

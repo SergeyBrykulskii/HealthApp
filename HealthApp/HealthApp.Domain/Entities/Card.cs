@@ -4,12 +4,7 @@ namespace HealthApp.Domain.Entities;
 
 public class Card : IEntity
 {
-    public Card()
-    {
-        Records = new();
-        Info = new();
-    }
-    public Card(int id, int age, bool male, double weight)
+    public Card(int id, int age = 0, bool male = true, double weight = 0)
     {
         Id = id;
         Records = new();
@@ -18,6 +13,12 @@ public class Card : IEntity
     public void AddRecord(int doctorId, string content, DateTime date)
     {
         Records.Add(new(doctorId, content, date));
+    }
+    public void AddInfo(int age, bool male, double weight)
+    {
+        Info.Age = age;
+        Info.Male = male;
+        Info.Weight = weight;
     }
     public int Id { get; set; }
     public List<Record> Records { get; set; }
