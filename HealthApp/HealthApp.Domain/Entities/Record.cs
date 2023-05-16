@@ -1,5 +1,8 @@
-﻿namespace HealthApp.Domain.Entities;
+﻿using SQLite;
 
+namespace HealthApp.Domain.Entities;
+
+[Table("Records")]
 public class Record
 {
     public Record()
@@ -12,7 +15,13 @@ public class Record
         Content = content;
         Date = date;
     }
+
+    [PrimaryKey, Indexed, AutoIncrement]
+    public int Id { get; set; }
+
     public DateTime Date { get; set; }
+
     public string Content { get; set; }
+
     public int DoctorId { get; set; }
 }

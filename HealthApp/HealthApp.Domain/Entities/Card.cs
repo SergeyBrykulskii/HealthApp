@@ -1,12 +1,13 @@
 ﻿using HealthApp.Domain.EntityInterfaces;
+using SQLite;
 
 namespace HealthApp.Domain.Entities;
 
+[Table("Cards")]
 public class Card : IEntity
 {
-    public Card(int id, int age = 0, bool male = true, double weight = 0)
+    public Card(int age = 0, bool male = true, double weight = 0)
     {
-        Id = id;
         Records = new();
         Info = new(age, male, weight);
     }
@@ -20,6 +21,7 @@ public class Card : IEntity
         Info.Male = male;
         Info.Weight = weight;
     }
+    [PrimaryKey, Indexed, AutoIncrement]
     public int Id { get; set; }
     public List<Record> Records { get; set; }
     public int PatientId { get; set; }
