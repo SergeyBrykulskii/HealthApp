@@ -11,9 +11,9 @@ public class Card : IEntity
         Records = new();
         Info = new(age, male, weight);
     }
-    public void AddRecord(int doctorId, string content, DateTime date)
+    public void AddRecord(string content, DateTime date)
     {
-        Records.Add(new(doctorId, content, date));
+        Records.Add(new(content, date));
     }
     public void AddInfo(int age, bool male, double weight)
     {
@@ -24,6 +24,6 @@ public class Card : IEntity
     [PrimaryKey, Indexed, AutoIncrement]
     public int Id { get; set; }
     public List<Record> Records { get; set; }
-    public int PatientId { get; set; }
+    public Patient Patient { get; set; } = new();
     public InformationAboutPatient Info { get; set; }
 }

@@ -1,4 +1,4 @@
-﻿using HealthApp.Domain.Abstractions;
+﻿/*using HealthApp.Domain.Abstractions;
 using HealthApp.Domain.Entities;
 using HealthApp.Persistence.Data;
 using HealthApp.Persistence.FakeRepositories;
@@ -25,3 +25,4 @@ public class FakeUnitOfWork : IUnitOfWork
         _cardsRepository = new Lazy<IEntityRepository<Card>>(() => new FakeEntityRepository<Card>(_fakeDbContext));
     }
 }
+*/

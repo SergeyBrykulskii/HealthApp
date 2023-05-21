@@ -1,17 +1,17 @@
-﻿using SQLite;
+﻿using HealthApp.Domain.EntityInterfaces;
+using SQLite;
 
 namespace HealthApp.Domain.Entities;
 
 [Table("Records")]
-public class Record
+public class Record : IEntity
 {
     public Record()
     {
         Content = string.Empty;
     }
-    public Record(int doctorId, string content, DateTime date)
+    public Record(string content, DateTime date)
     {
-        DoctorId = doctorId;
         Content = content;
         Date = date;
     }
@@ -23,5 +23,7 @@ public class Record
 
     public string Content { get; set; }
 
-    public int DoctorId { get; set; }
+    public Card Card { get; set; } = new();
+
+    public Doctor Doctor { get; set; } = new();
 }
