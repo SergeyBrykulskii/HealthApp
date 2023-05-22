@@ -1,8 +1,8 @@
 namespace HealthApp.Maui.Pages;
 
-public partial class MainPage : ContentPage
+public partial class DoctorPage : ContentPage
 {
-	public MainPage()
+	public DoctorPage()
 	{
 		InitializeComponent();
 	}
