@@ -3,6 +3,9 @@ using HealthApp.Application.Abstractions;
 using HealthApp.Application.Services;
 using HealthApp.Domain.Abstractions;
 using HealthApp.Maui.Pages;
+using HealthApp.Maui.Services.Abstractions;
+using HealthApp.Maui.Services.Implementation;
+using HealthApp.Maui.ViewModels;
 using HealthApp.Persistence.Data;
 using HealthApp.Persistence.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
@@ -43,7 +46,7 @@ public static class MauiProgram
     {
         services.AddSingleton<MainPage>();
         services.AddSingleton<LoginPage>();
-        services.AddSingleton<RegisterPage>();
+        services.AddSingleton<RegistrationPage>();
 
         services.AddTransient<DoctorPage>();
         services.AddTransient<PatientPage>();
@@ -57,10 +60,13 @@ public static class MauiProgram
         services.AddSingleton<IDoctorService, DoctorService>();
         services.AddSingleton<ICardService, CardService>();
         services.AddSingleton<IRecordService, RecordService>();
+
+        services.AddSingleton<IAuthenticationService, AuthenticationService>();
+        services.AddSingleton<IPasswordService, PasswordService>();
     }
     private static void SetupViewModels(IServiceCollection services)
     {
-
+        services.AddSingleton<LoginViewModel>();
     }
 
     private static void SetupAppDbContext(MauiAppBuilder builder)
