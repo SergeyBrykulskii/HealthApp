@@ -9,7 +9,7 @@
         <Label 
             Grid.Row="0"
             Grid.Column="0"
-            Text="Registration of new user"
+            Text="Registration of new doctor"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <VerticalStackLayout 
