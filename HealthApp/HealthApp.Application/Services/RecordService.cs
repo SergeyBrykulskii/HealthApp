@@ -46,4 +46,9 @@ public class RecordService : IRecordService
     {
         return _unitOfWork.RecordRepository.UpdateAsync(entity, cancellationToken);
     }
+
+    public Task SaveAllAsync()
+    {
+        return _unitOfWork.SaveAllAsync();
+    }
 }

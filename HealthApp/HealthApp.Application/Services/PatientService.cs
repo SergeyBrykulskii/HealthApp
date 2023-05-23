@@ -46,4 +46,9 @@ public class PatientService : IPatientService
     {
         return _unitOfWork.PatientRepository.UpdateAsync(entity, cancellationToken);
     }
+
+    public Task SaveAllAsync()
+    {
+        return _unitOfWork.SaveAllAsync();
+    }
 }

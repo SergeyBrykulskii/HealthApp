@@ -2,6 +2,6 @@
 
 public interface IPasswordService
 {
-    public string GetHashedPassword(string password);
-    public bool VerifyPassword(string password, string hashedPassword);
+    public byte[] GetHashedPassword(string password);
+    public bool VerifyPassword(string password, byte[] hashedPassword);
 }

@@ -6,7 +6,7 @@ namespace HealthApp.Domain.Entities;
 public class Patient : User
 {
     public Patient() { }
-    public Patient(string password, string email, string name = "") : base(name, password, email)
+    public Patient(byte[] password, string email, string name = "") : base(name, password, email)
     {
     }
 }

@@ -46,4 +46,9 @@ public class CardService : ICardService
     {
         return _unitOfWork.CardRepository.UpdateAsync(entity, cancellationToken);
     }
+
+    public Task SaveAllAsync()
+    {
+        return _unitOfWork.SaveAllAsync();
+    }
 }

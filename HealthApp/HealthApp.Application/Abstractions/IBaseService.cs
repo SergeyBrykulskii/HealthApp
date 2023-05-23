@@ -18,4 +18,6 @@ public interface IBaseService<T> where T : IEntity
     Task DeleteAsync(T entity, CancellationToken cancellationToken = default);
 
     Task<bool> IsExistsAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default);
+
+    Task SaveAllAsync();
 }

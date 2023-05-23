@@ -46,4 +46,9 @@ public class DoctorService : IDoctorService
     {
         return _unitOfWork.DoctorRepository.UpdateAsync(entity, cancellationToken);
     }
+
+    public Task SaveAllAsync()
+    {
+        return _unitOfWork.SaveAllAsync();
+    }
 }

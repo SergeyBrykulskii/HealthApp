@@ -44,11 +44,11 @@ public partial class LoginViewModel : ObservableObject
         bool isDoctor = await App.Current.MainPage.DisplayAlert("Are you doctor?", "", "Yes", "No");
         if (isDoctor)
         {
-            await Shell.Current.GoToAsync("//RegistrationPage");
+            await Shell.Current.GoToAsync("//RegistrationDoctorPage");
         }
         else
         {
-
+            await Shell.Current.GoToAsync("//RegistrationPatientPage");
         }
     }
 
