@@ -5,7 +5,7 @@
              Title="Registration Page">
     <Grid ColumnDefinitions="*"
           RowDefinitions="0.5*,*,*"
-          RowSpacing="10">
+          RowSpacing="15">
         <Label 
             Grid.Row="0"
             Grid.Column="0"
@@ -49,13 +49,22 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
         </VerticalStackLayout>
-        <Button 
+        <VerticalStackLayout
             Grid.Row="2"
             Grid.Column="0"
-            Text="Register"
-            Command="{Binding RegisterCommand}"
-            WidthRequest="150"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
+            Spacing="10">
+            <Button     
+                Text="Register"
+                Command="{Binding RegisterCommand}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Button     
+                Text="Back"
+                Command="{Binding BackToLoginCommand}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>

@@ -49,4 +49,10 @@ public partial class RegistrationDoctorViewModel : ObservableObject
         await App.Current.MainPage.DisplayAlert("Success", "You have successfully registered", "Ok");
         await Shell.Current.GoToAsync("//LoginPage");
     }
+
+    [RelayCommand]
+    public async Task BackToLogin()
+    {
+        await Shell.Current.GoToAsync("//LoginPage");
+    }
 }

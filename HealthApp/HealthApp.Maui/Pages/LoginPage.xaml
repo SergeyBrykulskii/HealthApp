@@ -11,6 +11,8 @@
             Grid.Column="0"
             Grid.Row="0"
             Text="Welcome HealthApp"
+            FontSize="Large"
+            FontAttributes="Bold"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <VerticalStackLayout
