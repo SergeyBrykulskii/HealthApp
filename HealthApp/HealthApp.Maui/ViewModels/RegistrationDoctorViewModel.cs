@@ -53,6 +53,7 @@ public partial class RegistrationDoctorViewModel : ObservableObject
         await _doctorService.AddAsync(NewDoctor);
         await _doctorService.SaveAllAsync();
 
+        Clear();
         await App.Current.MainPage.DisplayAlert("Success", "You have successfully registered", "Ok");
         await Shell.Current.GoToAsync("//LoginPage");
     }
@@ -60,6 +61,17 @@ public partial class RegistrationDoctorViewModel : ObservableObject
     [RelayCommand]
     public async Task BackToLogin()
     {
+        Clear();
         await Shell.Current.GoToAsync("//LoginPage");
+    }
+
+    private void Clear()
+    {
+        NewDoctor = new Doctor();
+        Password = "";
+        ConfirmPassword = "";
+        OnPropertyChanged(nameof(NewDoctor));
+        OnPropertyChanged(nameof(Password));
+        OnPropertyChanged(nameof(ConfirmPassword));
     }
 }

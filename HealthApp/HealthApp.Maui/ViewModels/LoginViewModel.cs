@@ -22,7 +22,6 @@ public partial class LoginViewModel : ObservableObject
     public async Task SingIn()
     {
         var user = await _authenticationService.LoginAsync(_email, _password);
-
         if (user is null)
         {
             await App.Current.MainPage.DisplayAlert("Error", "Invalid credentials", "Ok");
@@ -39,12 +38,14 @@ public partial class LoginViewModel : ObservableObject
         {
             await Shell.Current.GoToAsync("//PatientPage");
         }
+        Clear();
     }
 
     [RelayCommand]
     public async Task SingUp()
     {
         bool isDoctor = await App.Current.MainPage.DisplayAlert("Are you doctor?", "", "Yes", "No");
+        Clear();
         if (isDoctor)
         {
             await Shell.Current.GoToAsync("//RegistrationDoctorPage");
@@ -53,6 +54,15 @@ public partial class LoginViewModel : ObservableObject
         {
             await Shell.Current.GoToAsync("//RegistrationPatientPage");
         }
+    }
+
+    [RelayCommand]
+    public void Clear()
+    {
+        _email = string.Empty;
+        _password = string.Empty;
+        OnPropertyChanged(nameof(Email));
+        OnPropertyChanged(nameof(Password));
     }
 
 }

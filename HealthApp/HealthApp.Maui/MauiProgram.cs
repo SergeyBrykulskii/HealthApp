@@ -44,7 +44,7 @@ public static class MauiProgram
     }
     private static void SetupPages(IServiceCollection services)
     {
-        services.AddTransient<LoginPage>();
+        services.AddSingleton<LoginPage>();
         services.AddTransient<RegistrationPatientPage>();
         services.AddTransient<RegistrationDoctorPage>();
 
@@ -68,11 +68,12 @@ public static class MauiProgram
     }
     private static void SetupViewModels(IServiceCollection services)
     {
-        services.AddTransient<LoginViewModel>();
+        services.AddSingleton<LoginViewModel>();
         services.AddTransient<RegistrationPatientViewModel>();
         services.AddTransient<RegistrationDoctorViewModel>();
         services.AddTransient<DoctorViewModel>();
         services.AddTransient<DoctorInfoViewModel>();
+        services.AddTransient<PatientsViewModel>();
     }
 
     private static void SetupAppDbContext(MauiAppBuilder builder)

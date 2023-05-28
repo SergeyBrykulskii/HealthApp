@@ -24,9 +24,18 @@ public partial class DoctorInfoViewModel : ObservableObject
         CurrDoctor = await _doctorService.GetByIdAsync(id);
         OnPropertyChanged(nameof(CurrDoctor));
     }
+
     [RelayCommand]
     public async Task BackToDoctor()
     {
+        await Shell.Current.GoToAsync("//DoctorPage");
+    }
+
+    [RelayCommand]
+    public async Task Update()
+    {
+        OnPropertyChanged(nameof(CurrDoctor));
+        await _doctorService.UpdateAsync(CurrDoctor);
         await Shell.Current.GoToAsync("//DoctorPage");
     }
 }

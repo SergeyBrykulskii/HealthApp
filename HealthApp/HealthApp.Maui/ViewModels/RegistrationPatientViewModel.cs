@@ -50,7 +50,7 @@ public partial class RegistrationPatientViewModel : ObservableObject
         NewPatient.Password = _passwordService.GetHashedPassword(_password);
         await _patientService.AddAsync(NewPatient);
         await _patientService.SaveAllAsync();
-
+        Clear();
         await App.Current.MainPage.DisplayAlert("Success", "You have successfully registered", "Ok");
         await Shell.Current.GoToAsync("//LoginPage");
     }
@@ -58,6 +58,17 @@ public partial class RegistrationPatientViewModel : ObservableObject
     [RelayCommand]
     public async Task BackToLogin()
     {
+        Clear();
         await Shell.Current.GoToAsync("//LoginPage");
+    }
+
+    public void Clear()
+    {
+        NewPatient = new Patient();
+        Password = "";
+        ConfirmPassword = "";
+        OnPropertyChanged(nameof(NewPatient));
+        OnPropertyChanged(nameof(Password));
+        OnPropertyChanged(nameof(ConfirmPassword));
     }
 }
