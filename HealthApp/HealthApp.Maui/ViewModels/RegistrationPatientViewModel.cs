@@ -30,11 +30,16 @@ public partial class RegistrationPatientViewModel : ObservableObject
     [RelayCommand]
     public async Task Register()
     {
-        OnPropertyChanged(nameof(Doctor));
+        OnPropertyChanged(nameof(NewPatient));
         if (NewPatient.Name is null || NewPatient.Email is null ||
             NewPatient.Name == "" || NewPatient.Email == "")
         {
             await App.Current.MainPage.DisplayAlert("Error", "All fields are required", "Ok");
+            return;
+        }
+        if (_patientService.FirstOrDefaultAsync(p => p.Email == NewPatient.Email) is not null)
+        {
+            await App.Current.MainPage.DisplayAlert("Error", "User with such email already exists", "Ok");
             return;
         }
         if (_password != _confirmPassword)

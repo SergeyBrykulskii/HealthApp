@@ -30,11 +30,19 @@ public partial class RegistrationDoctorViewModel : ObservableObject
     [RelayCommand]
     public async Task Register()
     {
-        OnPropertyChanged(nameof(Doctor));
+        OnPropertyChanged(nameof(NewDoctor));
+
         if (NewDoctor.Name is null || NewDoctor.Email is null || NewDoctor.Speciality is null ||
             NewDoctor.Name == "" || NewDoctor.Email == "" || NewDoctor.Speciality == "")
         {
             await App.Current.MainPage.DisplayAlert("Error", "All fields are required", "Ok");
+            return;
+        }
+        //var doctor = await _doctorService.FirstOrDefaultAsync(d => d.Email == NewDoctor.Email);
+
+        if (await _doctorService.FirstOrDefaultAsync(d => d.Email == NewDoctor.Email) is not null)
+        {
+            await App.Current.MainPage.DisplayAlert("Error", "User with such email already exists", "Ok");
             return;
         }
         if (Password != ConfirmPassword)
