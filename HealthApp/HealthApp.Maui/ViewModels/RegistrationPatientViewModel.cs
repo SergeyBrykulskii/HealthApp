@@ -10,6 +10,7 @@ public partial class RegistrationPatientViewModel : ObservableObject
 {
     private readonly IPasswordService _passwordService;
     private readonly IPatientService _patientService;
+    private readonly ICardService _cardService;
 
     [ObservableProperty]
     private Patient _newPatient;
@@ -20,10 +21,11 @@ public partial class RegistrationPatientViewModel : ObservableObject
     [ObservableProperty]
     private string _confirmPassword;
 
-    public RegistrationPatientViewModel(IPasswordService passwordService, IPatientService patientService)
+    public RegistrationPatientViewModel(IPasswordService passwordService, IPatientService patientService, ICardService cardService)
     {
         _passwordService = passwordService;
         _patientService = patientService;
+        _cardService = cardService;
         _newPatient = new Patient();
     }
 
@@ -50,6 +52,14 @@ public partial class RegistrationPatientViewModel : ObservableObject
         NewPatient.Password = _passwordService.GetHashedPassword(_password);
         await _patientService.AddAsync(NewPatient);
         await _patientService.SaveAllAsync();
+
+        var newCard = new Card
+        {
+            Patient = NewPatient,
+        };
+        await _cardService.AddAsync(newCard);
+        await _cardService.SaveAllAsync();
+
         Clear();
         await App.Current.MainPage.DisplayAlert("Success", "You have successfully registered", "Ok");
         await Shell.Current.GoToAsync("//LoginPage");

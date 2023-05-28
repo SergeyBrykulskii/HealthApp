@@ -50,6 +50,7 @@ public static class MauiProgram
 
         services.AddTransient<DoctorPage>();
         services.AddTransient<DoctorInfoPage>();
+        services.AddTransient<PatientsPage>();
 
         services.AddTransient<PatientPage>();
         services.AddTransient<AddRecordPage>();

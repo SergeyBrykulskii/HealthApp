@@ -10,9 +10,15 @@
             Grid.Row="1"
             Grid.Column="0"
             Spacing="10">
+            <Entry 
+                Placeholder="Patient's email"
+                Text="{Binding PatientEmail}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
             <Button     
-                Text="Patients"
-                Command="{Binding GoToPatientsCommand}"
+                Text="Search patient"
+                Command="{Binding SearchPatientCommand}"
                 WidthRequest="150"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>

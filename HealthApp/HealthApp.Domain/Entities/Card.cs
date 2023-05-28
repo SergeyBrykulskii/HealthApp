@@ -31,8 +31,8 @@ public class Card : IEntity
 
     [PrimaryKey, Indexed, AutoIncrement]
     public int Id { get; set; }
-    public List<Record> Records { get; set; }
-    public Patient Patient { get; set; } = new();
+    public List<Record> Records { get; set; } = new List<Record>();
+    public Patient Patient { get; set; }
     public int Age { get; set; }
     public bool Male { get; set; }
     public double Weight { get; set; }
