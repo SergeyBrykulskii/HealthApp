@@ -37,7 +37,7 @@ public partial class RegistrationPatientViewModel : ObservableObject
             await App.Current.MainPage.DisplayAlert("Error", "All fields are required", "Ok");
             return;
         }
-        if (_patientService.FirstOrDefaultAsync(p => p.Email == NewPatient.Email) is not null)
+        if (await _patientService.FirstOrDefaultAsync(p => p.Email == NewPatient.Email) is not null)
         {
             await App.Current.MainPage.DisplayAlert("Error", "User with such email already exists", "Ok");
             return;

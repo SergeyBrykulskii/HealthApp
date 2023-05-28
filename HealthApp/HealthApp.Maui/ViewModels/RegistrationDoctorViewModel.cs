@@ -38,7 +38,6 @@ public partial class RegistrationDoctorViewModel : ObservableObject
             await App.Current.MainPage.DisplayAlert("Error", "All fields are required", "Ok");
             return;
         }
-        //var doctor = await _doctorService.FirstOrDefaultAsync(d => d.Email == NewDoctor.Email);
 
         if (await _doctorService.FirstOrDefaultAsync(d => d.Email == NewDoctor.Email) is not null)
         {

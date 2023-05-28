@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace HealthApp.Maui.Services.Abstractions;
 
-namespace HealthApp.Maui.Services.Abstractions
+public interface IEmailChecker
 {
-    interface IEmailChecker
-    {
-    }
+    bool IsValid(string email);
 }

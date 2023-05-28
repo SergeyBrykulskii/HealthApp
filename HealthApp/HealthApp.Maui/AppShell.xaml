@@ -27,4 +27,12 @@
         Title="Registeration Page"
         ContentTemplate="{DataTemplate local:RegistrationDoctorPage}"
         Route="RegistrationDoctorPage" />
+    <ShellContent
+        Title="Patients Page"
+        ContentTemplate="{DataTemplate local:PatientsPage}"
+        Route="PatientsPage" />
+    <ShellContent
+        Title="Doctor InfoPage"
+        ContentTemplate="{DataTemplate local:DoctorInfoPage}"
+        Route="DoctorInfoPage" />
 </Shell>

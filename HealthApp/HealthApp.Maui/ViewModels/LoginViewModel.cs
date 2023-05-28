@@ -28,6 +28,9 @@ public partial class LoginViewModel : ObservableObject
             await App.Current.MainPage.DisplayAlert("Error", "Invalid credentials", "Ok");
             return;
         }
+
+        Preferences.Default.Set("id", user.Id);
+
         if (user is Doctor)
         {
             await Shell.Current.GoToAsync("//DoctorPage");
