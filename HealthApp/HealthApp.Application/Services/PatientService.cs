@@ -51,4 +51,9 @@ public class PatientService : IPatientService
     {
         return _unitOfWork.SaveAllAsync();
     }
+
+    public Task<IReadOnlyList<Patient>> ListAsync(Expression<Func<Patient, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<Patient, object>>[] includesProperties)
+    {
+        return _unitOfWork.PatientRepository.ListAsync(filter, cancellationToken, includesProperties);
+    }
 }

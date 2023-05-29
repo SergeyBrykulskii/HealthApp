@@ -49,6 +49,16 @@ public class EfRepository<T> : IEntityRepository<T> where T : class, IEntity
         return await _entities.ToListAsync(cancellationToken);
     }
 
+    public async Task<IReadOnlyList<T>> ListAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includesProperties)
+    {
+        var query = _entities.Where(filter);
+        foreach (var includeProperty in includesProperties)
+        {
+            query = query.Include(includeProperty);
+        }
+        return await query.ToListAsync(cancellationToken);
+    }
+
     public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
     {
         _entities.Update(entity);

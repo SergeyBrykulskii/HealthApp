@@ -29,7 +29,7 @@
         Route="RegistrationDoctorPage" />
     <ShellContent
         Title="Patients Page"
-        ContentTemplate="{DataTemplate local:PatientsPage}"
+        ContentTemplate="{DataTemplate local:CardInfoPage}"
         Route="PatientsPage" />
     <ShellContent
         Title="Doctor InfoPage"

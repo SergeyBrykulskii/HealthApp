@@ -51,4 +51,9 @@ public class CardService : ICardService
     {
         return _unitOfWork.SaveAllAsync();
     }
+
+    public Task<IReadOnlyList<Card>> ListAsync(Expression<Func<Card, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<Card, object>>[] includesProperties)
+    {
+        return _unitOfWork.CardRepository.ListAsync(filter, cancellationToken, includesProperties);
+    }
 }

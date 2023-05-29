@@ -51,4 +51,9 @@ public class DoctorService : IDoctorService
     {
         return _unitOfWork.SaveAllAsync();
     }
+
+    public Task<IReadOnlyList<Doctor>> ListAsync(Expression<Func<Doctor, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<Doctor, object>>[] includesProperties)
+    {
+        return _unitOfWork.DoctorRepository.ListAsync(filter, cancellationToken, includesProperties);
+    }
 }

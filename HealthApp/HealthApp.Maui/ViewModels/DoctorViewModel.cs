@@ -18,7 +18,7 @@ public partial class DoctorViewModel : ObservableObject
     [RelayCommand]
     public async Task Logout()
     {
-        Preferences.Default.Remove("id");
+        Preferences.Default.Remove("doctorId");
         await Shell.Current.GoToAsync("//LoginPage");
     }
 
@@ -45,7 +45,7 @@ public partial class DoctorViewModel : ObservableObject
         else
         {
             Preferences.Default.Set("patientId", patient.Id);
-            await Shell.Current.GoToAsync($"//PatientInfoPage");
+            await Shell.Current.GoToAsync($"//CardInfoPage");
         }
     }
 }

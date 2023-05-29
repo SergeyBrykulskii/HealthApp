@@ -51,4 +51,9 @@ public class RecordService : IRecordService
     {
         return _unitOfWork.SaveAllAsync();
     }
+
+    public Task<IReadOnlyList<Record>> ListAsync(Expression<Func<Record, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<Record, object>>[] includesProperties)
+    {
+        return _unitOfWork.RecordRepository.ListAsync(filter, cancellationToken, includesProperties);
+    }
 }

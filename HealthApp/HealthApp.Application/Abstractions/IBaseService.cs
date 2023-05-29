@@ -19,5 +19,7 @@ public interface IBaseService<T> where T : IEntity
 
     Task<bool> IsExistsAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default);
 
+    Task<IReadOnlyList<T>> ListAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includesProperties);
+
     Task SaveAllAsync();
 }

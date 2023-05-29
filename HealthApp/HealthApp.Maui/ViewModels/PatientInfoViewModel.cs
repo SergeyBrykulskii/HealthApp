@@ -5,37 +5,32 @@ using HealthApp.Domain.Entities;
 
 namespace HealthApp.Maui.ViewModels;
 
-public partial class DoctorInfoViewModel : ObservableObject
+public partial class PatientInfoViewModel : ObservableObject
 {
-    private readonly IDoctorService _doctorService;
-
+    private readonly IPatientService _patientService;
     [ObservableProperty]
-    private Doctor _currDoctor;
-
-    public DoctorInfoViewModel(IDoctorService doctorService)
+    private Patient _currPatient;
+    public PatientInfoViewModel(IPatientService patientService)
     {
-        _doctorService = doctorService;
+        _patientService = patientService;
     }
-
     [RelayCommand]
     public async Task Appearing()
     {
-        var id = Preferences.Default.Get("doctorId", -1);
-        CurrDoctor = await _doctorService.GetByIdAsync(id);
-        OnPropertyChanged(nameof(CurrDoctor));
+        var id = Preferences.Default.Get("patientId", -1);
+        CurrPatient = await _patientService.GetByIdAsync(id);
+        OnPropertyChanged(nameof(CurrPatient));
     }
-
     [RelayCommand]
     public async Task BackToDoctor()
     {
         await Shell.Current.GoToAsync("//DoctorPage");
     }
-
     [RelayCommand]
     public async Task Update()
     {
-        OnPropertyChanged(nameof(CurrDoctor));
-        await _doctorService.UpdateAsync(CurrDoctor);
+        OnPropertyChanged(nameof(CurrPatient));
+        await _patientService.UpdateAsync(CurrPatient);
         await Shell.Current.GoToAsync("//DoctorPage");
     }
 }

@@ -28,14 +28,15 @@ public partial class LoginViewModel : ObservableObject
             return;
         }
 
-        Preferences.Default.Set("id", user.Id);
 
         if (user is Doctor)
         {
+            Preferences.Default.Set("doctorId", user.Id);
             await Shell.Current.GoToAsync("//DoctorPage");
         }
         else
         {
+            Preferences.Default.Set("patientId", user.Id);
             await Shell.Current.GoToAsync("//PatientPage");
         }
         Clear();
