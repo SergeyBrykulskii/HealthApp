@@ -22,15 +22,15 @@ public partial class PatientInfoViewModel : ObservableObject
         OnPropertyChanged(nameof(CurrPatient));
     }
     [RelayCommand]
-    public async Task BackToDoctor()
+    public async Task Back()
     {
-        await Shell.Current.GoToAsync("//DoctorPage");
+        await Shell.Current.GoToAsync("//PatientPage");
     }
     [RelayCommand]
     public async Task Update()
     {
         OnPropertyChanged(nameof(CurrPatient));
         await _patientService.UpdateAsync(CurrPatient);
-        await Shell.Current.GoToAsync("//DoctorPage");
+        await Shell.Current.GoToAsync("//PatientPage");
     }
 }

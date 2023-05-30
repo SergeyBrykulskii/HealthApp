@@ -7,6 +7,15 @@ public partial class PatientPage : ContentPage
         InitializeComponent();
     }
 
+    private void OnCardInfoClicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("//PatientCardInfo");
+    }
+
+    private void OnPatientInfoClicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("//PatientInfoPage");
+    }
     private void OnLogoutClicked(object sender, EventArgs e)
     {
         Preferences.Default.Remove("patientId");

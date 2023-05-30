@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using HealthApp.Maui.Services.Implementation;
 
-namespace HealthApp.Maui.ViewModels
+namespace HealthApp.Maui.ViewModels;
+
+public partial class PatientCardInfoViewModel : ObservableObject
 {
-    internal class PatientCardInfoViewModel
+    public RecordInfoService RecordInfoService { get; }
+    public PatientCardInfoViewModel(RecordInfoService recordInfoService)
     {
+        RecordInfoService = recordInfoService;
+    }
+
+    [RelayCommand]
+    public async Task Back()
+    {
+        await Shell.Current.GoToAsync("//PatientPage");
     }
 }

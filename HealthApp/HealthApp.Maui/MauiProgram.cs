@@ -53,6 +53,8 @@ public static class MauiProgram
         services.AddTransient<CardInfoPage>();
 
         services.AddTransient<PatientPage>();
+        services.AddTransient<PatientCardInfo>();
+        services.AddTransient<PatientInfoPage>();
         services.AddTransient<AddRecordPage>();
         services.AddTransient<GetStatisticPage>();
     }
@@ -78,6 +80,8 @@ public static class MauiProgram
         services.AddSingleton<RecordInfoService>();
         services.AddTransient<CardInfoViewModel>();
         services.AddTransient<AddRecordViewModel>();
+        services.AddTransient<PatientInfoViewModel>();
+        services.AddTransient<PatientCardInfoViewModel>();
     }
 
     private static void SetupAppDbContext(MauiAppBuilder builder)

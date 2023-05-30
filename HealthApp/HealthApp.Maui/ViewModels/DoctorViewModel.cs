@@ -22,11 +22,6 @@ public partial class DoctorViewModel : ObservableObject
         await Shell.Current.GoToAsync("//LoginPage");
     }
 
-    [RelayCommand]
-    public async Task GoToPatients()
-    {
-        await Shell.Current.GoToAsync("//PatientsPage");
-    }
 
     [RelayCommand]
     public async Task GoToMyInfo()

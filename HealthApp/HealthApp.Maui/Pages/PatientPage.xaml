@@ -12,13 +12,13 @@
             Spacing="10">
             <Button     
                 Text="My card"
-                Command="{Binding GoToCardInfoCommand}"
+                Clicked="OnCardInfoClicked"
                 WidthRequest="150"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
             <Button     
                 Text="My info"
-                Command="{Binding GoToMyInfoCommand}"
+                Clicked="OnPatientInfoClicked"
                 WidthRequest="150"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
