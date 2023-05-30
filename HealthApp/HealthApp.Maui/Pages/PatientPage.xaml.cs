@@ -9,7 +9,7 @@ public partial class PatientPage : ContentPage
 
     private void OnLogoutClicked(object sender, EventArgs e)
     {
-        Preferences.Default.Remove("id");
+        Preferences.Default.Remove("patientId");
         Shell.Current.GoToAsync("//LoginPage");
     }
 }
