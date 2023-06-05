@@ -12,12 +12,12 @@
         <HorizontalStackLayout Grid.Row="0">
             <Button 
                     Text="Add record"
-                    WidthRequest="260"
+                    WidthRequest="200"
                     HorizontalOptions="Center"
                     Command="{Binding AddRecordCommand}" />
             <Button 
                     Text="Back"
-                    WidthRequest="260"
+                    WidthRequest="200"
                     HorizontalOptions="Center"
                     Command="{Binding BackCommand}" />
 
@@ -28,7 +28,8 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="entities:Record">
                     <Frame HeightRequest="230"
-                           Margin="10,10,10,10">
+                           Margin="10,10,10,10"
+                           BackgroundColor="Black">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding 
                                 Source={RelativeSource AncestorType={x:Type models:CardInfoViewModel} },
@@ -44,8 +45,7 @@
                                    FontSize="Medium"
                                    HorizontalOptions="Fill"
                                    VerticalOptions="Fill"
-                                   FontAutoScalingEnabled="True"
-                                   HeightRequest="70">
+                                   FontAutoScalingEnabled="True">
                             </Label>
                             <Label Grid.Row="1"
                                    Grid.Column="0"
@@ -53,8 +53,7 @@
                                    FontSize="Medium"
                                    HorizontalOptions="Fill"
                                    VerticalOptions="Fill"
-                                   FontAutoScalingEnabled="True"
-                                   HeightRequest="70">
+                                   FontAutoScalingEnabled="True">
                             </Label>
                             <Label Grid.Row="2"
                                    Grid.Column="0"
@@ -62,8 +61,7 @@
                                    FontSize="Medium"
                                    HorizontalOptions="Fill"
                                    VerticalOptions="Fill"
-                                   FontAutoScalingEnabled="True"
-                                   HeightRequest="70">
+                                   FontAutoScalingEnabled="True">
                             </Label>
                         </Grid>
                     </Frame>
