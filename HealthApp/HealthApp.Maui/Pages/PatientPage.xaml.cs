@@ -1,10 +1,14 @@
+using HealthApp.Maui.ViewModels;
+
 namespace HealthApp.Maui.Pages;
 
 public partial class PatientPage : ContentPage
 {
-    public PatientPage()
+    private readonly StatisticViewModel _viewModel;
+    public PatientPage(StatisticViewModel viewModel)
     {
         InitializeComponent();
+        _viewModel = viewModel;
     }
 
     private void OnCardInfoClicked(object sender, EventArgs e)
@@ -20,5 +24,11 @@ public partial class PatientPage : ContentPage
     {
         Preferences.Default.Remove("patientId");
         Shell.Current.GoToAsync("//LoginPage");
+    }
+
+    private void OnStatisticClicked(object sender, EventArgs e)
+    {
+        _viewModel.GetStatistic();
+        Shell.Current.GoToAsync("//StatisticPage");
     }
 }

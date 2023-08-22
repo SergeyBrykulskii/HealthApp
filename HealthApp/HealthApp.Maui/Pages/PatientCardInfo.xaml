@@ -22,7 +22,8 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="entities:Record">
                     <Frame HeightRequest="230"
-                           Margin="10,10,10,10">
+                           Margin="10,10,10,10"
+                           BackgroundColor="Black">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding 
                                 Source={RelativeSource AncestorType={x:Type models:CardInfoViewModel} },

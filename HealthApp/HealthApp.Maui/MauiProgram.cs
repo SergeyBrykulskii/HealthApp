@@ -11,6 +11,7 @@ using HealthApp.Persistence.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 using System.Reflection;
 
 namespace HealthApp.Maui;
@@ -23,6 +24,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseSkiaSharp(true)
             .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
@@ -56,7 +58,8 @@ public static class MauiProgram
         services.AddTransient<PatientCardInfo>();
         services.AddTransient<PatientInfoPage>();
         services.AddTransient<AddRecordPage>();
-        services.AddTransient<GetStatisticPage>();
+
+        services.AddTransient<StatisticPage>();
     }
     private static void SetupServices(IServiceCollection services)
     {
@@ -82,6 +85,7 @@ public static class MauiProgram
         services.AddTransient<AddRecordViewModel>();
         services.AddTransient<PatientInfoViewModel>();
         services.AddTransient<PatientCardInfoViewModel>();
+        services.AddSingleton<StatisticViewModel>();
     }
 
     private static void SetupAppDbContext(MauiAppBuilder builder)

@@ -22,6 +22,12 @@
                 WidthRequest="150"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
+            <Button
+                Text="My statistic"
+                Clicked="OnStatisticClicked"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
             <Button     
                 Text="Log out"
                 Clicked="OnLogoutClicked"

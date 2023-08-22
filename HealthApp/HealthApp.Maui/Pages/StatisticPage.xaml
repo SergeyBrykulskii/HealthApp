@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthApp.Maui.Pages.StatisticPage"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             Title="StatisticPage">
+    <Grid
+        ColumnDefinitions="*"
+        RowDefinitions="8*,*">
+        <lvc:CartesianChart
+            Grid.Row="0"
+            Grid.Column="0"
+            Series="{Binding Series}"
+            XAxes="{Binding XAxes}"
+            LegendPosition="Right">
+        </lvc:CartesianChart>
+        <Button 
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="Back"
+            WidthRequest="200"
+            HorizontalOptions="Center"
+            Command="{Binding BackCommand}" />
+    </Grid>
+</ContentPage>
