@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthApp.Maui.Pages.RegistrationDoctorPage"
+             Title="Registration Page">
+    <Grid ColumnDefinitions="*"
+          RowDefinitions="0.5*,3*,*,*"
+          RowSpacing="10">
+        <Label 
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Registration of new doctor"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <VerticalStackLayout 
+            Grid.Row="1"
+            Grid.Column="0"
+            Spacing="10">
+            <Entry 
+                Placeholder="Name"
+                Text="{Binding NewDoctor.Name}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Entry 
+                Placeholder="Email"
+                Text="{Binding NewDoctor.Email}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Entry 
+                Placeholder="Spaciality"
+                Text="{Binding NewDoctor.Speciality}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Entry 
+                Placeholder="Password" 
+                IsPassword="True"
+                Text="{Binding Password}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Entry 
+                Placeholder="Confirm password"
+                IsPassword="True"
+                Text="{Binding ConfirmPassword}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            Grid.Row="2"
+            Grid.Column="0"
+            Spacing="10">
+            <Button     
+                Text="Register"
+                Command="{Binding RegisterCommand}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Button     
+                Text="Back"
+                Command="{Binding BackToLoginCommand}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

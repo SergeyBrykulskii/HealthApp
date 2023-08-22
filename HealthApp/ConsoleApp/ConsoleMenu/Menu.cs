@@ -1,4 +1,4 @@
-﻿using HealthApp.Application.Abstractions.ConsoleApp;
+﻿/*using HealthApp.Application.Abstractions;
 using HealthApp.Domain.Entities;
 
 namespace ConsoleApp.ConsoleMenu;
@@ -140,3 +140,4 @@ public class Menu
     }
 
 }
+*/

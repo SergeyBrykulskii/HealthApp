@@ -1,7 +1,7 @@
-﻿using ConsoleApp.AdditionalServices;
+﻿/*using ConsoleApp.AdditionalServices;
 using ConsoleApp.ConsoleMenu;
-using HealthApp.Application.Abstractions.ConsoleApp;
-using HealthApp.Application.Services.ConsoleApp;
+using HealthApp.Application.Abstractions;
+using HealthApp.Application.Services;
 using HealthApp.Domain.Abstractions;
 using HealthApp.Domain.Entities;
 using HealthApp.Persistence.Data;
@@ -207,4 +207,4 @@ void ConsoleClosing(object? sender, ConsoleCancelEventArgs e)
 void AppClosing(object? sender, EventArgs e)
 {
     services.GetRequiredService<IFakeDbContext>().Serialize();
-}
+}*/

@@ -1,18 +1,29 @@
-﻿namespace HealthApp.Domain.Entities;
+﻿using HealthApp.Domain.EntityInterfaces;
+using SQLite;
 
-public class Record
+namespace HealthApp.Domain.Entities;
+
+[Table("Records")]
+public class Record : IEntity
 {
     public Record()
     {
         Content = string.Empty;
     }
-    public Record(int doctorId, string content, DateTime date)
+    public Record(string content, DateTime date)
     {
-        DoctorId = doctorId;
         Content = content;
         Date = date;
     }
+
+    [PrimaryKey, Indexed, AutoIncrement]
+    public int Id { get; set; }
+
     public DateTime Date { get; set; }
+
     public string Content { get; set; }
-    public int DoctorId { get; set; }
+
+    public Card Card { get; set; } = new();
+
+    public Doctor Doctor { get; set; } = new();
 }

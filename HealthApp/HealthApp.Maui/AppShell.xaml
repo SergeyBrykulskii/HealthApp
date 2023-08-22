@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="HealthApp.Maui.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:HealthApp.Maui.Pages"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent
+        Title="Login Page"
+        ContentTemplate="{DataTemplate local:LoginPage}"
+        Route="LoginPage" />
+    <ShellContent
+        Title="Doctor Page"
+        ContentTemplate="{DataTemplate local:DoctorPage}"
+        Route="DoctorPage" />
+    <ShellContent
+        Title="Patient Page"
+        ContentTemplate="{DataTemplate local:PatientPage}"
+        Route="PatientPage" />
+    <ShellContent
+        Title="Registeration Page"
+        ContentTemplate="{DataTemplate local:RegistrationPatientPage}"
+        Route="RegistrationPatientPage" />
+
+    <ShellContent
+        Title="Registeration Page"
+        ContentTemplate="{DataTemplate local:RegistrationDoctorPage}"
+        Route="RegistrationDoctorPage" />
+    <ShellContent
+        Title="CardInfo Page"
+        ContentTemplate="{DataTemplate local:CardInfoPage}"
+        Route="CardInfoPage" />
+    <ShellContent
+        Title="Doctor InfoPage"
+        ContentTemplate="{DataTemplate local:DoctorInfoPage}"
+        Route="DoctorInfoPage" />
+    <ShellContent
+        Title="Patient InfoPage"
+        ContentTemplate="{DataTemplate local:PatientInfoPage}"
+        Route="PatientInfoPage" />
+    <ShellContent
+        Title="AddRecordPage"
+        ContentTemplate="{DataTemplate local:AddRecordPage}"
+        Route="AddRecordPage" />
+    <ShellContent
+        Title="PatientCardInfo"
+        ContentTemplate="{DataTemplate local:PatientCardInfo}"
+        Route="PatientCardInfo" />
+    <ShellContent
+        Title="StatisticPage"
+        ContentTemplate="{DataTemplate local:StatisticPage}"
+        Route="StatisticPage" />
+
+</Shell>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:HealthApp.Maui.ViewModels"
+             xmlns:entities="clr-namespace:HealthApp.Domain.Entities;assembly=HealthApp.Domain"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthApp.Maui.Pages.CardInfoPage"
+             Title="CardInfoPage">
+    
+    <Grid RowDefinitions="*,7*"
+          RowSpacing="10">
+        <HorizontalStackLayout Grid.Row="0">
+            <Button 
+                    Text="Add record"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"
+                    Command="{Binding AddRecordCommand}" />
+            <Button 
+                    Text="Back"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"
+                    Command="{Binding BackCommand}" />
+
+        </HorizontalStackLayout>
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding RecordInfoService.Records}"
+                        HorizontalOptions="Fill">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="entities:Record">
+                    <Frame HeightRequest="230"
+                           Margin="10,10,10,10"
+                           BackgroundColor="Black">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding 
+                                Source={RelativeSource AncestorType={x:Type models:CardInfoViewModel} },
+                                    Path=DoEditCommand}"
+                                                  CommandParameter="{Binding}" />
+                        </Frame.GestureRecognizers>
+                        <Grid RowDefinitions="*,*,*"
+                              ColumnDefinitions="*,Auto"
+                              RowSpacing="8">
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="{Binding Doctor.Name, StringFormat='Doctor: {0}'}"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill"
+                                   FontAutoScalingEnabled="True">
+                            </Label>
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="{Binding Content, StringFormat='Content: {0}'}"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill"
+                                   FontAutoScalingEnabled="True">
+                            </Label>
+                            <Label Grid.Row="2"
+                                   Grid.Column="0"
+                                   Text="{Binding Date, StringFormat='Date: {0}'}"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill"
+                                   FontAutoScalingEnabled="True">
+                            </Label>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,4 +1,4 @@
-﻿using HealthApp.Domain.Abstractions;
+﻿/*using HealthApp.Domain.Abstractions;
 using HealthApp.Domain.Entities;
 using HealthApp.Domain.EntityInterfaces;
 using HealthApp.Persistence.Data;
@@ -70,3 +70,4 @@ public class FakeEntityRepository<T> : IEntityRepository<T> where T : IEntity
         return _entities.FirstOrDefault(filter)!;
     }
 }
+*/

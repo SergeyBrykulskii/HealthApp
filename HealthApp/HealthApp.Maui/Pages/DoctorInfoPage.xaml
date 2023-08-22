@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="HealthApp.Maui.Pages.DoctorInfoPage"
+             Title="Doctor InfoPage">
+    <ContentPage.Behaviors>
+
+        <toolkit:EventToCommandBehavior EventName="Appearing" 
+                                         Command="{Binding AppearingCommand}" />
+    </ContentPage.Behaviors>
+    <Grid ColumnDefinitions="*"
+          RowDefinitions="0.5*,*,*,*"
+          RowSpacing="10">
+        <VerticalStackLayout 
+            Grid.Row="1"
+            Grid.Column="0"
+            Spacing="10">
+            <Entry 
+                Placeholder="Name"
+                Text="{Binding CurrDoctor.Name}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Entry 
+                Placeholder="Email"
+                Text="{Binding CurrDoctor.Email}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Entry 
+                Placeholder="Spaciality"
+                Text="{Binding CurrDoctor.Speciality}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            Grid.Row="3"
+            Grid.Column="0"
+            Spacing="10">
+            <Button     
+                Text="Update"
+                Command="{Binding UpdateCommand}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Button     
+                Text="Back"
+                Command="{Binding BackToDoctorCommand}"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

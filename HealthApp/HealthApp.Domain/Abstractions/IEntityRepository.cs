@@ -1,20 +1,23 @@
 ﻿using HealthApp.Domain.EntityInterfaces;
+using System.Linq.Expressions;
 
 namespace HealthApp.Domain.Abstractions;
 
 public interface IEntityRepository<T> where T : IEntity
 {
-    T GetById(int id);
+    Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default);
 
-    IReadOnlyList<T> ListAll();
+    Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default);
 
-    void Add(T entity);
+    Task AddAsync(T entity, CancellationToken cancellationToken = default);
 
-    void Update(T entity);
+    Task UpdateAsync(T entity, CancellationToken cancellationToken = default);
 
-    void Delete(T entity);
+    Task DeleteAsync(T entity, CancellationToken cancellationToken = default);
 
-    bool IsExists(Func<T, bool> filter);
+    Task<bool> IsExistsAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default);
 
-    T FirstOrDefault(Func<T, bool> filter);
+    Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyList<T>> ListAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includesProperties);
 }

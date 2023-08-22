@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthApp.Maui.Pages.PatientPage"
+             Title="Your page">
+    <Grid ColumnDefinitions="*"
+          RowDefinitions="0.5*,*"
+          RowSpacing="10">
+        <VerticalStackLayout 
+            Grid.Row="1"
+            Grid.Column="0"
+            Spacing="10">
+            <Button     
+                Text="My card"
+                Clicked="OnCardInfoClicked"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Button     
+                Text="My info"
+                Clicked="OnPatientInfoClicked"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Button
+                Text="My statistic"
+                Clicked="OnStatisticClicked"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Button     
+                Text="Log out"
+                Clicked="OnLogoutClicked"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
